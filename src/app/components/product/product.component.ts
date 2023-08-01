@@ -14,5 +14,5 @@ export class ProductComponent {
   product5 = { productId: 5, productName: 'Camera', categoryId: 1, unitPrice: 5 };
 
   products = [this.product1, this.product2, this.product3, this.product4, this.product5];
-  
+   
 }
