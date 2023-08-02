@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-//Bunun vasıtasıyla artık bir backende istekte bulunabiliriz bu şekilde dataya ulaşırız
-import { HttpClient } from '@angular/common/http';
-import { ProductResponseModel } from 'src/app/models/productResponseModel';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -10,30 +8,21 @@ import { ProductResponseModel } from 'src/app/models/productResponseModel';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-
   products: Product[] = [];
-  apiUrl = 'https://localhost:44314/api/products/getall';
+  dataLoaded=false;
 
-
-  //HttpClient'ı bir angular projesinde kullanabilmek için bizim angular'a bizim için bir HttpClient nesnesi oluşturmasını söylememiz gerekiyor
-  //HttpClient'ı kullanabilmek için onu enjecte etmemiz gerekiyor
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(private productService: ProductService) {}
 
   //Component açıldığında ilk çalışan metot
   ngOnInit(): void {
-    console.log('Init Çalıştı');
+    this.getProducts();
   }
 
-  
-  //Apimize bağlanacağız burada
   getProducts() {
-    //Gelen Datayı ProductResponseModel'ine map edeceksin haberin olsun
-    this.httpClient
-      .get<ProductResponseModel>(this.apiUrl)
-      .subscribe((response) => {
-        this.products=response.data;
-      });
+    this.productService.getProducts().subscribe((response) => {
+      this.products = response.data;
+      this.dataLoaded=true;
+    });
+    
   }
 }
