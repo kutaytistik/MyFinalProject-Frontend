@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
   products: Product[] = [];
   dataLoaded=false;
+  filterText="";
 
   //ActivatedRoute build in bir angular servisi
   constructor(private productService: ProductService, private activadetRoute:ActivatedRoute) {}
