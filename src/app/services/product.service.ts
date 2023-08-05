@@ -2,7 +2,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductResponseModel } from '../models/productResponseModel';
+import { ListResponseModel } from '../models/listResponseModel';
+import { Product } from '../models/product';
+
 
 //Bunu görürse bu bir servis olduğunu anla
 @Injectable({
@@ -17,14 +19,14 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {}
 
   //Apimize bağlanacağız burada
-  getProducts() :Observable<ProductResponseModel>{
+  getProducts() :Observable<ListResponseModel<Product>>{
 
     //HttpClient ile backend datalarına ulaşabiliriz api çağrısı yapıyoruz
     //Angular'da tanımlı HttpClient nesnesi yardımıyla api bağlantısı yapabiliyoruz
     //Gelen Datayı ProductResponseModel'ine map edeceksin haberin olsun
     //Observable
 
-    return this.httpClient.get<ProductResponseModel>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
       
   }
 
