@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,11 @@ import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
+import { ToastrModule } from 'ngx-toastr';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ProductAddComponent } from './components/product-add/product-add.component'
 
 @NgModule({
   //Bir component kullancağım zaman buraya o componenti eklemem gerekiyor
@@ -22,6 +26,8 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     NaviComponent,
     VatAddedPipe,
     FilterPipePipe,
+    CartSummaryComponent,
+    ProductAddComponent,
   ],
   //Farklı yerlerden yükleyebileceğimiz projeler var bunlara module diyoruz
   imports: [
@@ -29,8 +35,13 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(
+      { positionClass: "toast-bottom-right" }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
