@@ -14,7 +14,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
 import { ToastrModule } from 'ngx-toastr';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
-import { ProductAddComponent } from './components/product-add/product-add.component'
+import { ProductAddComponent } from './components/product-add/product-add.component';
+import { LoginComponent } from './components/login/login.component';
+
 
 @NgModule({
   //Bir component kullancağım zaman buraya o componenti eklemem gerekiyor
@@ -28,6 +30,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
     FilterPipePipe,
     CartSummaryComponent,
     ProductAddComponent,
+    LoginComponent
   ],
   //Farklı yerlerden yükleyebileceğimiz projeler var bunlara module diyoruz
   imports: [
